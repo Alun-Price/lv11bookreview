@@ -42,7 +42,7 @@ class Book extends Model
     }
 
 
-    private function dateRangefilter(Builder $query, $from = null, $to = null)
+    private function dateRangeFilter(Builder $query, $from = null, $to = null)
     {
         if($from && !$to) {
             $query->where('created_at', '>=', $from);
