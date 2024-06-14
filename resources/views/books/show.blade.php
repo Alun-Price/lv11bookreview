@@ -40,4 +40,5 @@
       @endforelse
     </ul>
   </div>
+
 @endsection

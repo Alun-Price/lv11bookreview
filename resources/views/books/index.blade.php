@@ -59,4 +59,10 @@
       </li>
     @endforelse
   </ul>
+  @if ($books->count() > 0)
+	<nav>
+		{{ $books->links() }}
+	</nav>
+
+@endif
 @endsection
