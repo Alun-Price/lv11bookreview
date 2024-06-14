@@ -15,6 +15,7 @@ class BookController extends Controller
     {
         $title = $request->input('title');
         $filter = $request->input('filter', '');
+        $page = $request->query('page') ?? 1;
 
         $books = Book::when(
             $title,
@@ -33,8 +34,13 @@ class BookController extends Controller
 
         // $books = $books->get();
 
-        $cacheKey = 'books:'. $filter . ':' . $title;
-        $books = $books->paginate(10);
+        $cacheKey = 'books:'. $filter . ':' . $title .':' . $page;
+
+        $books = cache()->remember(
+            $cacheKey,
+            3600,
+            fn() => $books->paginate(10)
+        );
 
         return view('books.index', ['books' => $books]);
     }

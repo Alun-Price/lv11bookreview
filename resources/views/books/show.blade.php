@@ -40,5 +40,11 @@
       @endforelse
     </ul>
   </div>
+  @if ($reviews->count() > 0)
+	<nav>
+		{{ $reviews->links() }}
+	</nav>
+
+  @endif
 
 @endsection

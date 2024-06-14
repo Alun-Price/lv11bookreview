@@ -60,9 +60,8 @@
     @endforelse
   </ul>
   @if ($books->count() > 0)
-	<nav>
-		{{ $books->links() }}
+	<nav class="mt-4">
+		{{ $books->appends(['filter' => request('filter'), 'title' => request('title')])->links() }}
 	</nav>
-
-@endif
+  @endif
 @endsection
